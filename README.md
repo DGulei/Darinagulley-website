@@ -1,0 +1,1 @@
+[![build status](https://git.dbogatov.org/dgulley/DashaWebsite/badges/master/build.svg)](https://git.dbogatov.org/dbogatov/DashaWebsite/commits/master)

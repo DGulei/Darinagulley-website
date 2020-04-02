@@ -1,0 +1,54 @@
+stages:
+- test
+- release
+- deploy
+
+include: 'https://git.dbogatov.org/templates/ci-snippets/raw/master/trigger-websites-deploy.yml'
+
+tidy:
+  image: dbogatov/docker-images:tidy-latest
+  stage: test
+  before_script:
+  - http-server -p 8080 > /dev/null &
+  - sleep 5
+  script:
+  - curl -Ls http://localhost:8080/index.html | tidy -e
+  tags:
+  - docker
+  
+blc:
+  image: dbogatov/docker-images:blc-old-latest
+  stage: test
+  before_script:
+  - http-server -p 8080 > /dev/null &
+  - sleep 5
+  script:
+  - blc --filter-level 3 --input http://localhost:8080/index.html -rog --exclude "*linkedin.*" --exclude *facebook.* | tee blc.out
+  - "cat blc.out | grep '0 broken.'"
+  tags:
+  - docker
+
+dockerify:
+  stage: release
+  script:
+  - docker build -t registry.dbogatov.org/dgulley/dashawebsite .
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.dbogatov.org
+  - docker push registry.dbogatov.org/dgulley/dashawebsite
+  tags:
+  - shell
+
+pages:
+  image: dbogatov/docker-images:alpine-extras-latest
+  stage: release
+  script:
+  - mkdir public/
+  - mv assets/ *.png *.ico *.html public/
+  - echo "Uploading files to pages"
+  artifacts:
+    expire_in: 30 min
+    paths:
+    - public
+  tags:
+  - docker
+  only:
+  - master
