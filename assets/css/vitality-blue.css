@@ -616,10 +616,10 @@ aside.cta-quote span.quote {
 .portfolio-carousel {
   padding: 0;
   color: white;
-  background-color: #222222;
+  background-color: #2e2a2a;
 }
 .portfolio-carousel .item {
-  background-color: #222222;
+  background-color: #2e2a2a;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -666,7 +666,7 @@ aside.cta-quote span.quote {
   margin: auto 0 !important;
   top: 0;
   bottom: 0;
-  background-color: #222222 !important;
+  background-color: #2e2a2a !important;
   color: white !important;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -979,7 +979,7 @@ aside.cta-quote span.quote {
   opacity: 1;
 }
 .floating-label-form-group-with-focus label {
-  color: #0a8fd5;
+  color: #222222;
 }
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #e1e1e1;
@@ -1051,7 +1051,7 @@ footer.footer .copyright p.small {
 }
 .btn-outline-light:hover,
 .btn-outline-light:focus {
-  color: #0a8fd5;
+  color: #222222;
   background: white;
   outline: none;
 }
