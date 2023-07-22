@@ -177,7 +177,7 @@ hr.colored {
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #0a8fd5;
+  color: #222222;
   background-color: white;
   border-radius: 0;
 }
